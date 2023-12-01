@@ -115,14 +115,14 @@
 
       buttonNo.style.left = `${randomX}px`;
       buttonNo.style.top = `${randomY}px`;
-      const randomNumber = Math.floor(Math.random() * 3 + 1);
+      const randomNumber = Math.floor(Math.random() * 3);
     document.getElementById("h2").innerHTML = choice[randomNumber].text
     }
 
     function yesClicked() {
         document.getElementById("giffy").src = "https://giphy.com/embed/zTQQPJXn1j8Jy"
         document.getElementById("headingg").innerHTML = "Cảm ơn em đã tham gia !!"
-        document.getElementById("h2").innerHTML = "Hehehehehhe"
+        document.getElementById("h2").innerHTML = "Làm vui vui thoi, bạn đừng để ý nhiều :D"
         document.getElementById("noButton").style.visibility = "hidden"
         document.getElementById("yesButton").style.visibility = "hidden"
         createFlowers()
