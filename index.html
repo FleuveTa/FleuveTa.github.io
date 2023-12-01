@@ -3,123 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
     <style>
-        html,body{ scroll-behavior: smooth}
-        #img-section {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
+        .yes-butt {
+            font-size: 20px;
+            background-color: rgb(13, 218, 13);
+            font-weight: 700;
+            margin-right: 100px;
         }
-        .button-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
+        .button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+        .body {
+            display: flex;
+            width: 100vw;
+            justify-content: center;
+            align-items: center;
+        }
+        .content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .button {
             padding: 10px 20px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
             cursor: pointer;
         }
+        .no-butt {
+            font-size: 20px;
+            font-weight: 700;
+            background-color: rgb(207, 81, 81);
+            position: absolute;
+            margin-left: 100px;
+        }
+
+        @keyframes falling {
+        0% {
+            transform: translateY(-100%);
+            opacity: 0;
+        }
+        100% {
+            transform: translateY(100vh);
+            opacity: 1;
+        }
+        }
+
+        .flower {
+        position: absolute;
+        color: rgb(212, 102, 166)(255, 0, 149); 
+        font-size: 30px;
+        animation: falling linear; 
+        }
     </style>
+    <title>Document</title>
 </head>
 <body>
-    <h1>Sinh vien image : </h1>
-    <input type="text" placeholder="type student id">
-    <button>Search</button>
-    <br>
-    <button id="show-20" onclick="qh2020()"><h1>QH2020</h1></button>
-    <button id="show-21" onclick="qh2021()"><h1>QH2021</h1></button>
-    <button id="show-22" onclick="qh2022()"><h1>QH2022</h1></button>
-    <button class="button-top" onclick="goTop()">GO TOP</button>
-    <br>
-    <br>
-    <br>
-
-
-
-    <div id="img-section">
-
+    <div class="content">
+        <h1 id="headingg">DFHJSKDFJSDHSJKDJKSDHKJSDHJ</h1>
+        <iframe src="https://giphy.com/embed/777Aby0ZetYE8" id="giffy" width="480" height="259" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p></p>
+        <h2>Click chuột vào mấy nút dưới này để chọn :D</h2>
     </div>
-
-    <script>
-
-        var msv = 21020001;
-        var arr_msv_20 = [];
-        var arr_msv_22 = [];
-        var arr_msv_21 = [];
-
-        for (let i = 21020001; i < 21021485; i++) {
-            arr_msv_21.push(i);
-        }
-        for (let i = 22020100; i < 22021226; i++) {
-            arr_msv_22.push(i);
-        }
-        for (let i = 20020001; i < 20021485; i++) {
-            arr_msv_20.push(i);
-        }
-
-        function goTop () {
-            window.scrollTo(0, 0);
-        }
-
-        function delChild() {
-            const myNode = document.getElementById("img-section");
-            while (myNode.firstChild) {
-                myNode.removeChild(myNode.lastChild);
-            }
-        }
-
-        function qh2021() {
-            delChild();
-            arr_msv_21.forEach( (v) => {
-                let img_con = document.createElement('div')
-                let msv_num = document.createElement('h5')
-                msv_num.innerHTML = v;
-                let img = document.createElement('img');
-                img.src = "https://student.uet.vnu.edu.vn/Data/DocReq/Img_" + v + ".jpg";
-                img.style.width = "200px";
-                img.style.height = "200px";
-                img_con.appendChild(img)
-                img_con.appendChild(msv_num)
-                document.getElementById('img-section').appendChild(img_con);
-                }
-            )
-        }
-        function qh2022() {
-            delChild();
-            arr_msv_22.forEach( (v) => {
-                let img_con = document.createElement('div')
-                let msv_num = document.createElement('h5')
-                msv_num.innerHTML = v;
-                let img = document.createElement('img');
-                img.src = "https://student.uet.vnu.edu.vn/Data/DocReq/Img_" + v + ".jpg";
-                img.style.width = "200px";
-                img.style.height = "200px";
-                img_con.appendChild(img)
-                img_con.appendChild(msv_num)
-                document.getElementById('img-section').appendChild(img_con);
-                }
-            )
-        }
-        function qh2020() {
-            delChild();
-            arr_msv_20.forEach( (v) => {
-                let img_con = document.createElement('div')
-                let msv_num = document.createElement('h5')
-                msv_num.innerHTML = v;
-                let img = document.createElement('img');
-                img.src = "https://student.uet.vnu.edu.vn/Data/DocReq/Img_" + v + ".jpg";
-                img.style.width = "200px";
-                img.style.height = "200px";
-                img_con.appendChild(img)
-                img_con.appendChild(msv_num)
-                document.getElementById('img-section').appendChild(img_con);
-                }
-            )
-        }
-        
-    </script>
+    <div class="button-container">
+        <button class="button yes-butt" onclick="yesClicked()">Okii</button>
+        <button class="button no-butt" id="noButton" onmouseover="moveButton()">Không !!!!</button> 
+    </div>   
 </body>
+<script>
+    function createFlowers() {
+      const numFlowers = 300; 
+
+      for (let i = 0; i < numFlowers; i++) {
+        const flower = document.createElement('div');
+        flower.innerHTML = '❀'; // Ký tự hoa rơi
+        flower.classList.add('flower');
+        flower.style.left = `${Math.random() * window.innerWidth}px`;
+        flower.style.top = `-${Math.random() * window.innerHeight}px`;
+        flower.style.animationDuration = `${Math.random() * 3 + 2}s`; 
+        document.body.appendChild(flower);
+
+        setTimeout(() => {
+          flower.remove();
+        }, 5000); 
+      }
+    }
+
+    function moveButton() {
+      const windowWidth = window.innerWidth - 50;
+      const windowHeight = window.innerHeight - 20;
+
+      const buttonNo = document.getElementById('noButton');
+
+      const randomX = Math.floor(Math.random() * (windowWidth - buttonNo.offsetWidth));
+      const randomY = Math.floor(Math.random() * (windowHeight - buttonNo.offsetHeight));
+
+      buttonNo.style.left = `${randomX}px`;
+      buttonNo.style.top = `${randomY}px`;
+    }
+
+    function yesClicked() {
+        document.getElementById("giffy").src = "https://giphy.com/embed/zTQQPJXn1j8Jy"
+        document.getElementById("headingg").innerHTML = "Cảm ơn em đã tham gia !!"
+        createFlowers()
+    }
+
+    
+</script>
 </html>
