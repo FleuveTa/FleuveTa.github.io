@@ -31,6 +31,7 @@
 
         .button {
             padding: 10px 20px;
+            width: 120px;
             cursor: pointer;
         }
         .no-butt {
@@ -54,25 +55,36 @@
 
         .flower {
         position: absolute;
-        color: red;
+        color: red; 
         font-size: 30px;
         animation: falling linear; 
         }
     </style>
-    <title>Document</title>
+    <title>Làm gì đi</title>
 </head>
 <body>
     <div class="content">
         <h1 id="headingg">DFHJSKDFJSDHSJKDJKSDHKJSDHJ</h1>
         <iframe src="https://giphy.com/embed/777Aby0ZetYE8" id="giffy" width="480" height="259" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p></p>
-        <h2>Click chuột vào mấy nút dưới này để chọn :D</h2>
+        <h2 id="h2">Click chuột vào mấy nút dưới này để chọn :D</h2>
     </div>
     <div class="button-container">
-        <button class="button yes-butt" onclick="yesClicked()">Okii</button>
-        <button class="button no-butt" id="noButton" onmouseover="moveButton()">Không !!!!</button> 
+        <button class="button yes-butt" id="yesButton" onclick="yesClicked()">Okii</button>
+        <button class="button no-butt" id="noButton" onmouseover="moveButton()">Không!!!</button> 
     </div>   
 </body>
 <script>
+    var choice = [
+        {
+            text: "Tại sao lại không được chọn Không nhỉ :("
+        },
+        {
+            text: "Sao nó cứ bay lung tung thế này"
+        },
+        {
+            text: "Hay bạn thử chọn Có đi"
+        },
+    ]
     function createFlowers() {
       const numFlowers = 300; 
 
@@ -92,8 +104,8 @@
     }
 
     function moveButton() {
-      const windowWidth = window.innerWidth - 50;
-      const windowHeight = window.innerHeight - 20;
+      const windowWidth = window.innerWidth - 200;
+      const windowHeight = window.innerHeight - 100;
 
       const buttonNo = document.getElementById('noButton');
 
@@ -102,11 +114,16 @@
 
       buttonNo.style.left = `${randomX}px`;
       buttonNo.style.top = `${randomY}px`;
+      const randomNumber = Math.floor(Math.random() * 3);
+    document.getElementById("h2").innerHTML = choice[randomNumber].text
     }
 
     function yesClicked() {
         document.getElementById("giffy").src = "https://giphy.com/embed/zTQQPJXn1j8Jy"
         document.getElementById("headingg").innerHTML = "Cảm ơn em đã tham gia !!"
+        document.getElementById("h2").innerHTML = "Hehehehehhe"
+        document.getElementById("noButton").style.visibility = "hidden"
+        document.getElementById("yesButton").style.visibility = "hidden"
         createFlowers()
     }
 
